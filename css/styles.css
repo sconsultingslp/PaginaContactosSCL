@@ -1,0 +1,720 @@
+/* ==========================================================================
+   SOLUTIONS CONSULTING SCL - TARJETA WEB & CONTACTO EJECUTIVO QR
+   Diseño Moderno, Limpio, Enfocado en 1-Click Móvil & Desktop
+   Paleta: Chocolate Intenso, Bronce Metálico, Oro Cálido y Botones Vivos
+   ========================================================================== */
+
+:root {
+  /* Brand Palette Solutions Consulting */
+  --bg-page: #1a0f07;
+  --bg-page-gradient: radial-gradient(circle at 50% 10%, #361f10 0%, #1a0f07 80%);
+  --card-bg: #27160c;
+  --card-bg-glass: rgba(43, 24, 13, 0.92);
+  --card-border: #5a381e;
+  --gold-primary: #e2b343;
+  --gold-glow: rgba(226, 179, 67, 0.4);
+  --gold-gradient: linear-gradient(135deg, #f6d37a 0%, #d49f32 50%, #996e1b 100%);
+  
+  /* Text */
+  --text-primary: #ffffff;
+  --text-secondary: #ebd9c8;
+  --text-muted: #b89f8c;
+
+  /* Button Vibrant Action Colors */
+  --wa-bg: linear-gradient(135deg, #25d366 0%, #158b42 100%);
+  --wa-glow: rgba(37, 211, 102, 0.35);
+  --cell-bg: linear-gradient(135deg, #1e70d4 0%, #0d468e 100%);
+  --cell-glow: rgba(30, 112, 212, 0.35);
+  --work-bg: linear-gradient(135deg, #87532a 0%, #573315 100%);
+  --work-glow: rgba(135, 83, 42, 0.35);
+  --home-bg: linear-gradient(135deg, #6c4627 0%, #432813 100%);
+  --home-glow: rgba(108, 70, 39, 0.35);
+  --email-bg: linear-gradient(135deg, #e65100 0%, #b23b00 100%);
+  --email-glow: rgba(230, 81, 0, 0.35);
+  --maps-bg: linear-gradient(135deg, #059669 0%, #046c4e 100%);
+  --maps-glow: rgba(5, 150, 105, 0.35);
+  --web-bg: linear-gradient(135deg, #4f46e5 0%, #312e81 100%);
+  --web-glow: rgba(79, 70, 229, 0.35);
+
+  /* Fonts */
+  --font-main: 'Montserrat', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  --font-cursive: 'Great Vibes', 'Alex Brush', cursive;
+}
+
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: var(--font-main);
+  background: var(--bg-page);
+  background-image: var(--bg-page-gradient);
+  min-height: 100vh;
+  color: var(--text-primary);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+  padding: 20px 16px 40px 16px;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* Background Ambient Shimmer */
+.ambient-glow {
+  position: fixed;
+  top: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 600px;
+  height: 350px;
+  background: radial-gradient(circle, rgba(226, 179, 67, 0.12) 0%, transparent 70%);
+  pointer-events: none;
+  z-index: 0;
+}
+
+/* Central Mobile/Desktop App Container */
+.contact-app-container {
+  width: 100%;
+  max-width: 580px;
+  position: relative;
+  z-index: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+/* ==========================================================================
+   1. BRAND HEADER CARD
+   ========================================================================== */
+.brand-card {
+  background: var(--card-bg-glass);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1px solid var(--card-border);
+  border-radius: 24px;
+  padding: 28px 22px 22px 22px;
+  text-align: center;
+  box-shadow: 0 12px 35px rgba(0, 0, 0, 0.45);
+  position: relative;
+  overflow: hidden;
+}
+
+.brand-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 3px;
+  background: var(--gold-gradient);
+}
+
+.brand-logo-container {
+  display: inline-block;
+  margin-bottom: 12px;
+}
+
+.brand-logo-image {
+  height: 75px;
+  width: auto;
+  max-width: 100%;
+  object-fit: contain;
+  filter: drop-shadow(0 4px 10px rgba(0, 0, 0, 0.5));
+  transition: transform 0.3s ease;
+}
+
+.brand-logo-image:hover {
+  transform: scale(1.03);
+}
+
+.brand-slogan-text {
+  font-family: var(--font-cursive);
+  font-size: 1.85rem;
+  color: #fff8ee;
+  text-shadow: 0 2px 8px rgba(0, 0, 0, 0.7), 0 0 15px rgba(226, 179, 67, 0.3);
+  margin-top: 4px;
+  line-height: 1.25;
+}
+
+.brand-badge-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  background: rgba(226, 179, 67, 0.15);
+  border: 1px solid rgba(226, 179, 67, 0.35);
+  color: var(--gold-primary);
+  font-size: 0.72rem;
+  font-weight: 800;
+  padding: 5px 14px;
+  border-radius: 20px;
+  margin-top: 12px;
+  letter-spacing: 0.8px;
+  text-transform: uppercase;
+}
+
+.pulse-dot {
+  width: 7px;
+  height: 7px;
+  background: #10b981;
+  border-radius: 50%;
+  box-shadow: 0 0 6px #10b981;
+  animation: pulse-live 1.8s infinite;
+}
+
+@keyframes pulse-live {
+  0% { transform: scale(0.9); opacity: 0.7; }
+  50% { transform: scale(1.3); opacity: 1; }
+  100% { transform: scale(0.9); opacity: 0.7; }
+}
+
+/* ==========================================================================
+   2. PRIMARY HERO BUTTON (GUARDAR EN CONTACTOS)
+   ========================================================================== */
+.btn-save-contact-hero {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+  width: 100%;
+  background: var(--gold-gradient);
+  color: #1a0f07;
+  font-family: var(--font-main);
+  font-size: 0.96rem;
+  font-weight: 800;
+  letter-spacing: 0.8px;
+  text-transform: uppercase;
+  padding: 16px 20px;
+  border-radius: 16px;
+  border: none;
+  cursor: pointer;
+  box-shadow: 0 8px 25px var(--gold-glow);
+  transition: all 0.25s ease;
+  position: relative;
+  overflow: hidden;
+  text-decoration: none;
+}
+
+.btn-save-contact-hero:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 12px 30px rgba(226, 179, 67, 0.5);
+  filter: brightness(1.05);
+}
+
+.btn-save-contact-hero:active {
+  transform: scale(0.98);
+}
+
+.btn-save-contact-hero i {
+  font-size: 1.35rem;
+}
+
+/* ==========================================================================
+   3. SECTION TITLE
+   ========================================================================== */
+.section-heading-bar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 4px 6px;
+  margin-top: 6px;
+}
+
+.section-heading-bar span {
+  font-size: 0.76rem;
+  font-weight: 800;
+  color: var(--gold-primary);
+  letter-spacing: 1.2px;
+  text-transform: uppercase;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.section-heading-bar small {
+  font-size: 0.68rem;
+  color: var(--text-muted);
+}
+
+/* ==========================================================================
+   4. 1-CLICK EXECUTIVE BUTTONS LIST
+   ========================================================================== */
+.buttons-stack {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.action-btn-card {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 14px 18px;
+  border-radius: 16px;
+  text-decoration: none;
+  color: #ffffff;
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.25);
+  transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+  position: relative;
+  overflow: hidden;
+  border: 1px solid rgba(255, 255, 255, 0.15);
+}
+
+.action-btn-card:hover {
+  transform: translateY(-3px) scale(1.01);
+  box-shadow: 0 12px 25px rgba(0, 0, 0, 0.35);
+  filter: brightness(1.08);
+}
+
+.action-btn-card:active {
+  transform: scale(0.98);
+}
+
+.btn-content-left {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+  min-width: 0;
+}
+
+.btn-icon-bubble {
+  width: 46px;
+  height: 46px;
+  border-radius: 12px;
+  background: rgba(255, 255, 255, 0.2);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.35rem;
+  flex-shrink: 0;
+  backdrop-filter: blur(8px);
+  border: 1px solid rgba(255, 255, 255, 0.25);
+  box-shadow: inset 0 1px 1px rgba(255, 255, 255, 0.3);
+}
+
+.btn-texts {
+  display: flex;
+  flex-direction: column;
+  line-height: 1.25;
+  min-width: 0;
+}
+
+.btn-label-tag {
+  font-size: 0.68rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.8px;
+  opacity: 0.88;
+}
+
+.btn-main-val {
+  font-size: 1.05rem;
+  font-weight: 800;
+  letter-spacing: 0.3px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.btn-sub-note {
+  font-size: 0.72rem;
+  opacity: 0.8;
+  margin-top: 2px;
+}
+
+/* Right side action triggers */
+.btn-right-triggers {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  flex-shrink: 0;
+}
+
+.btn-copy-chip {
+  background: rgba(0, 0, 0, 0.25);
+  color: #ffffff;
+  padding: 6px 10px;
+  border-radius: 8px;
+  font-size: 0.72rem;
+  font-weight: 700;
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.btn-copy-chip:hover {
+  background: rgba(255, 255, 255, 0.25);
+  transform: scale(1.05);
+}
+
+.btn-arrow-icon {
+  font-size: 1.1rem;
+  opacity: 0.85;
+}
+
+/* Individual Button Palettes */
+.btn-whatsapp {
+  background: var(--wa-bg);
+  box-shadow: 0 6px 18px var(--wa-glow);
+}
+
+.btn-celular {
+  background: var(--cell-bg);
+  box-shadow: 0 6px 18px var(--cell-glow);
+}
+
+.btn-trabajo {
+  background: var(--work-bg);
+  box-shadow: 0 6px 18px var(--work-glow);
+}
+
+.btn-casa {
+  background: var(--home-bg);
+  box-shadow: 0 6px 18px var(--home-glow);
+}
+
+.btn-correo {
+  background: var(--email-bg);
+  box-shadow: 0 6px 18px var(--email-glow);
+}
+
+.btn-direccion {
+  background: var(--maps-bg);
+  box-shadow: 0 6px 18px var(--maps-glow);
+}
+
+.btn-web {
+  background: var(--web-bg);
+  box-shadow: 0 6px 18px var(--web-glow);
+}
+
+/* ==========================================================================
+   5. ADDRESS & LOCATION CARD (GOOGLE MAPS PREVIEW)
+   ========================================================================== */
+.location-card {
+  background: var(--card-bg-glass);
+  border: 1px solid var(--card-border);
+  border-radius: 20px;
+  padding: 20px;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.35);
+}
+
+.location-header {
+  display: flex;
+  align-items: flex-start;
+  gap: 14px;
+  margin-bottom: 15px;
+}
+
+.location-icon-box {
+  width: 44px;
+  height: 44px;
+  border-radius: 12px;
+  background: rgba(226, 179, 67, 0.18);
+  border: 1px solid rgba(226, 179, 67, 0.4);
+  color: var(--gold-primary);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.3rem;
+  flex-shrink: 0;
+}
+
+.location-info h4 {
+  font-size: 0.95rem;
+  font-weight: 800;
+  color: #ffffff;
+  margin-bottom: 3px;
+}
+
+.location-info p {
+  font-size: 0.82rem;
+  color: var(--text-secondary);
+  line-height: 1.45;
+}
+
+.location-cta-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 10px;
+}
+
+.btn-map-action {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  padding: 10px 14px;
+  border-radius: 10px;
+  font-size: 0.78rem;
+  font-weight: 700;
+  text-decoration: none;
+  text-align: center;
+  transition: all 0.2s;
+  cursor: pointer;
+  border: 1px solid transparent;
+}
+
+.btn-map-primary {
+  background: #059669;
+  color: #ffffff;
+}
+
+.btn-map-primary:hover {
+  background: #047857;
+  transform: translateY(-2px);
+}
+
+.btn-map-copy {
+  background: rgba(255, 255, 255, 0.1);
+  color: var(--text-secondary);
+  border-color: rgba(255, 255, 255, 0.2);
+}
+
+.btn-map-copy:hover {
+  background: rgba(255, 255, 255, 0.18);
+  color: #ffffff;
+}
+
+/* ==========================================================================
+   6. QUICK CALLBACK CARD (TE LLAMAMOS)
+   ========================================================================== */
+.callback-box {
+  background: linear-gradient(135deg, rgba(67, 40, 19, 0.8) 0%, rgba(39, 22, 12, 0.9) 100%);
+  border: 1px solid rgba(226, 179, 67, 0.35);
+  border-radius: 20px;
+  padding: 20px;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.35);
+}
+
+.callback-box h4 {
+  font-size: 0.92rem;
+  font-weight: 800;
+  color: var(--gold-primary);
+  margin-bottom: 6px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.callback-box p {
+  font-size: 0.78rem;
+  color: var(--text-secondary);
+  margin-bottom: 12px;
+}
+
+.callback-form-row {
+  display: flex;
+  gap: 8px;
+}
+
+.callback-input-phone {
+  flex: 1;
+  background: rgba(0, 0, 0, 0.4);
+  border: 1px solid rgba(226, 179, 67, 0.4);
+  border-radius: 10px;
+  padding: 10px 14px;
+  color: #ffffff;
+  font-family: inherit;
+  font-size: 0.85rem;
+  outline: none;
+}
+
+.callback-input-phone:focus {
+  border-color: var(--gold-primary);
+  box-shadow: 0 0 0 3px rgba(226, 179, 67, 0.2);
+}
+
+.btn-callback-send {
+  background: var(--gold-gradient);
+  color: #1a0f07;
+  font-weight: 800;
+  font-size: 0.8rem;
+  padding: 10px 16px;
+  border-radius: 10px;
+  border: none;
+  cursor: pointer;
+  transition: all 0.2s;
+  white-space: nowrap;
+}
+
+.btn-callback-send:hover {
+  filter: brightness(1.1);
+  transform: translateY(-1px);
+}
+
+/* ==========================================================================
+   7. QR SHARE & PRINT MODAL TRIGGER
+   ========================================================================== */
+.share-qr-trigger-card {
+  background: rgba(255, 255, 255, 0.06);
+  border: 1px dashed rgba(226, 179, 67, 0.4);
+  border-radius: 16px;
+  padding: 14px 18px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.share-qr-trigger-card:hover {
+  background: rgba(226, 179, 67, 0.12);
+  border-color: var(--gold-primary);
+  transform: translateY(-2px);
+}
+
+.share-qr-left {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.share-qr-left i {
+  font-size: 1.4rem;
+  color: var(--gold-primary);
+}
+
+.share-qr-texts strong {
+  font-size: 0.85rem;
+  display: block;
+  color: #ffffff;
+}
+
+.share-qr-texts span {
+  font-size: 0.72rem;
+  color: var(--text-muted);
+}
+
+/* ==========================================================================
+   8. FOOTER
+   ========================================================================== */
+.app-footer {
+  text-align: center;
+  padding: 18px 10px 10px 10px;
+  font-size: 0.72rem;
+  color: var(--text-muted);
+  line-height: 1.5;
+}
+
+.app-footer strong {
+  color: var(--gold-primary);
+}
+
+/* ==========================================================================
+   9. MODALS (QR CODE & SIMULADOR DE LLAMADA)
+   ========================================================================== */
+.modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.8);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  z-index: 9999;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 16px;
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+  transition: all 0.3s ease;
+}
+
+.modal-overlay.active {
+  opacity: 1;
+  visibility: visible;
+  pointer-events: auto;
+}
+
+.modal-content-card {
+  background: #27160c;
+  border: 1px solid var(--gold-primary);
+  border-radius: 20px;
+  width: 100%;
+  max-width: 420px;
+  padding: 24px;
+  text-align: center;
+  box-shadow: 0 20px 50px rgba(0, 0, 0, 0.6);
+  position: relative;
+  transform: scale(0.9);
+  transition: transform 0.3s ease;
+}
+
+.modal-overlay.active .modal-content-card {
+  transform: scale(1);
+}
+
+.modal-close-btn {
+  position: absolute;
+  top: 14px;
+  right: 16px;
+  background: rgba(255, 255, 255, 0.1);
+  color: #ffffff;
+  border-radius: 50%;
+  width: 32px;
+  height: 32px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.1rem;
+  cursor: pointer;
+  border: none;
+  transition: all 0.2s;
+}
+
+.modal-close-btn:hover {
+  background: #dc2626;
+  transform: rotate(90deg);
+}
+
+.modal-qr-canvas-box {
+  background: #ffffff;
+  padding: 14px;
+  border-radius: 12px;
+  display: inline-block;
+  margin: 16px 0;
+  box-shadow: 0 4px 15px rgba(0,0,0,0.3);
+}
+
+/* ==========================================================================
+   10. TOAST NOTIFICATION
+   ========================================================================== */
+.toast-msg {
+  position: fixed;
+  bottom: 24px;
+  left: 50%;
+  transform: translateX(-50%) translateY(100px);
+  background: #1a0f07;
+  color: #ffffff;
+  border: 1px solid var(--gold-primary);
+  border-radius: 30px;
+  padding: 10px 22px;
+  font-size: 0.82rem;
+  font-weight: 700;
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.5);
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  z-index: 10000;
+  opacity: 0;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  white-space: nowrap;
+}
+
+.toast-msg.show {
+  transform: translateX(-50%) translateY(0);
+  opacity: 1;
+}
+
+.toast-msg i {
+  color: var(--gold-primary);
+  font-size: 1rem;
+}
