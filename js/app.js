@@ -12,8 +12,8 @@ const SCL_CONTACT = {
   homePhoneRaw: "+524446887449",
   cellPhone: "444 130 5773",
   cellPhoneRaw: "+524441305773",
-  email: "marketing2@solutionsconsultingslp.com",
-  website: "https://www.solutionsconsultingslp.com",
+  email: "marketing@solutionsconsultingslp.com",
+  website: "https://www.solutionsconsultingslp.com/",
   address: "Anahuac 414, 78250 San Luis Potosí San Luis Potosí, Mexico"
 };
 
