@@ -20,7 +20,7 @@ const SCL_CONTACT = {
 // 1. Download Official vCard (.vcf)
 function downloadOfficialVCard() {
   const link = document.createElement("a");
-  link.href = "assets/Solutions_Consulting.vcf";
+  link.href = "assets/Solutions_Consulting.vcf?v=2";
   link.download = "Solutions_Consulting.vcf";
   document.body.appendChild(link);
   link.click();
